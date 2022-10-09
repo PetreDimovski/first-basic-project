@@ -1,8 +1,22 @@
-<h1>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <title>Document</title>
+</head>
+<body>
 
-    Home Page Controller!!!
+<h1 class="text-3xl p-2 font-bold">
+    First Project
 </h1>
 
-<a href={{ route('blog.show', ['id' => 1]) }}>Blog</a>
+</body>
+</html>
+
+
 
 
