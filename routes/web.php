@@ -35,8 +35,8 @@ Route::prefix('/blog')->group( function () {
     Route::delete('/{id}', [PostsController::class,'destroy'])->name('blog.destroy');
 });
 
-
 //Route::resource('blog', PostsController::class);
+
 
 //Route for invoke method
 Route::get('/',HomeController::class);

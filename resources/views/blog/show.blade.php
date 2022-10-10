@@ -10,11 +10,7 @@
 </head>
 <body>
 
-     @forelse ($posts as $posts)
-        {{ $loop->parent }}
-     @empty
-        <p> No post added</p>
-     @endforelse
+        {{ $post  }}
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,14 +11,9 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = DB::table('posts')
-            ->where('id', '>', 50)
-            ->count();
-
-        dd($posts);
-
-        return view('blog.index');
-
+        return view('blog.index', [
+            'posts' => Post::orderBy('updated_at', 'desc')->get()
+            ]);
     }
 
 
@@ -34,7 +30,9 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        return $id;
+        return view('blog.show',[
+            'post' => Post::findOrFail($id)
+        ]);
     }
 
     public function edit($id)

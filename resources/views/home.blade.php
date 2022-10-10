@@ -11,7 +11,7 @@
 <body>
 
 <h1 class="text-3xl p-2 font-bold">
-    First Project
+    First Project 1
 </h1>
 
 </body>
