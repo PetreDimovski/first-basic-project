@@ -1,52 +1,27 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
-
 /*
-
-    GET -> Request a resource
-
-    POST -> Create a new resource
-
-    PUT -> Update a resource
-
-    PATCH -> Modify / Edit a resource
-
-    DELETE -> Delete a resource
-
-    OPTIONS -> Ask the serves which verbs are aloowed
-
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
 */
 
-Route::prefix('/blog')->group( function () {
-
-    Route::get('/create', [PostsController::class,'create'])->name('blog.create');
-    //GET
-    Route::get('/', [PostsController::class,'index'])->name('blog.index');
-    Route::get('/{id}', [PostsController::class,'show'])->name('blog.show');
-    //POST
-    Route::post('/', [PostsController::class,'store'])->name('blog.store');
-    //PUT or PATCH
-    Route::get('/edit/{id}', [PostsController::class,'edit'])->name('blog.edit');
-    Route::patch('/{id}', [PostsController::class,'update'])->name('blog.update');
-    //DELETE
-    Route::delete('/{id}', [PostsController::class,'destroy'])->name('blog.destroy');
+Route::get('/', function () {
+    return view('welcome');
 });
 
-//Route::resource('blog', PostsController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
+require __DIR__.'/auth.php';
 
-//Route for invoke method
-Route::get('/',HomeController::class);
-
-//Multiple HHTP verbs
-
-//Route::match(['GET', 'POST'], '/blog', [PostsController::class, 'index']);
-//Route::any('/blog', [PostsController::class, 'index']);
-
-
-
-
+Route::resource('blog', PostsController::class);

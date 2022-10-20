@@ -13,12 +13,9 @@ class Post extends Model
         'title', 'excerpt', 'body', 'image_path', 'is_published', 'min_to_read'
     ];
 
-    //protected $table = 'posts'; -> Daca vrem sa conectam modelul cu alta DB
-
-    //protected $primaryKey = 'title'; -> daca vrem sa facem alta coloana sa fie Primary Key
-
-    //protected $timestamps = false; -> turning timestams off
-
-   //protected $dateTime = 'U'; ->data la care a fost salvata informatia
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

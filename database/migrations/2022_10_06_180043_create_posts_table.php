@@ -11,16 +11,18 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->id() ;
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title')->unique();
             $table->text('excerpt')->nullable();
             $table->text('body');
             $table->integer('min_to_read')->default(1);
             $table->string('image_path');
             $table->boolean('is_published');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
